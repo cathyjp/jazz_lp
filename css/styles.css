@@ -1,0 +1,1192 @@
+/* 平泉ジャズフェスティバル2026 - スタイルシート */
+
+/* リセットとベーススタイル */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.6;
+    color: #2c3e50;
+    background-color: #f8f9fa;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* セクション共通スタイル */
+section {
+    padding: 80px 0;
+    position: relative;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #d4af37, #7b68ee, #20b2aa, #9370db, #4682b4);
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: #6c757d;
+    font-weight: 300;
+}
+
+/* ボタンスタイル */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #d4af37, #b8860b);
+    color: #1a1a1a;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #7b68ee, #6a5acd);
+    color: #fff;
+    box-shadow: 0 8px 25px rgba(123, 104, 238, 0.3);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(123, 104, 238, 0.4);
+}
+
+/* ヘッダー */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(248, 249, 250, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header.scrolled {
+    background: rgba(248, 249, 250, 0.98);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(248, 249, 250, 0.98);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    transition: transform 0.3s ease;
+    max-width: 200px;
+    object-fit: contain;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.nav-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #2c3e50;
+    position: relative;
+    display: inline-block;
+}
+
+.nav-menu {
+    display: flex;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-link {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #d4af37, #7b68ee);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #d4af37;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background: #2c3e50;
+    transition: all 0.3s ease;
+}
+
+/* ヒーローセクション */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    animation: fadeInUp 1s ease-out;
+}
+
+.title-img {
+    width: 100%;
+    /* 画面幅の100% */
+    max-width: 800px;
+    /* 最大800px */
+    height: auto;
+    /* 縦横比を維持 */
+    display: block;
+    margin: 0 auto;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: #495057;
+    margin-bottom: 30px;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-bottom: 40px;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.hero-visual {
+    position: relative;
+    animation: fadeInRight 1s ease-out 0.5s both;
+}
+
+.hero-shapes {
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.shape-1 {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #d4af37, #b8860b);
+    top: 50px;
+    left: 50px;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #7b68ee, #6a5acd);
+    top: 200px;
+    right: 50px;
+    animation-delay: 2s;
+}
+
+.shape-3 {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #20b2aa, #008b8b);
+    bottom: 100px;
+    left: 100px;
+    animation-delay: 4s;
+}
+
+.shape-4 {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #9370db, #8a2be2);
+    top: 100px;
+    right: 100px;
+    animation-delay: 1s;
+}
+
+.hero-scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.scroll-down {
+    color: #2c3e50;
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+    text-decoration: none;
+}
+
+/* 概要セクション */
+.about {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    position: relative;
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.about-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(212, 175, 55, 0.05);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: all 0.3s ease;
+}
+
+.about-item:hover {
+    transform: translateY(-5px);
+    background: rgba(212, 175, 55, 0.08);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.about-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #d4af37, #7b68ee);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.about-info h3 {
+    color: #2c3e50;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.about-info p {
+    color: #495057;
+    line-height: 1.6;
+}
+
+.about-image {
+    position: relative;
+}
+
+.about-visual {
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+.visual-element {
+    position: absolute;
+    border-radius: 20px;
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.element-1 {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #d4af37, #b8860b);
+    top: 0;
+    left: 0;
+    animation-delay: 0s;
+}
+
+.element-2 {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #7b68ee, #6a5acd);
+    top: 100px;
+    right: 0;
+    animation-delay: 1.5s;
+}
+
+.element-3 {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #20b2aa, #008b8b);
+    bottom: 0;
+    left: 50px;
+    animation-delay: 3s;
+}
+
+/* タイムテーブルセクション */
+.timetable {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+}
+
+.timetable-container {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.time-axis {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.time-marker {
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+.time-marker::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 15px;
+    background: #d4af37;
+}
+
+.stages {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.stage {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.stage:hover {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(212, 175, 55, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.stage-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.stage-header h3 {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.stage-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.stage-1 .stage-color {
+    background: #d4af37;
+}
+
+.stage-2 .stage-color {
+    background: #7b68ee;
+}
+
+.stage-3 .stage-color {
+    background: #20b2aa;
+}
+
+.stage-4 .stage-color {
+    background: #9370db;
+}
+
+.stage-5 .stage-color {
+    background: #4682b4;
+}
+
+.stage-6 .stage-color {
+    background: #daa520;
+}
+
+.stage-7 .stage-color {
+    background: #8a2be2;
+}
+
+.stage-8 .stage-color {
+    background: #2e8b57;
+}
+
+.stage-9 .stage-color {
+    background: #cd853f;
+}
+
+.stage-schedule {
+    position: relative;
+    height: 60px;
+    background: rgba(248, 249, 250, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.performance {
+    position: absolute;
+    top: 10px;
+    height: 40px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(123, 104, 238, 0.1));
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    transition: all 0.3s ease;
+}
+
+.performance:hover {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(123, 104, 238, 0.2));
+    transform: scale(1.05);
+    z-index: 10;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.artist {
+    color: #2c3e50;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.time {
+    color: #6c757d;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+/* 出演アーティストセクション */
+.artists {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    position: relative;
+}
+
+.artists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.artist-card {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.artist-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.artist-card:hover::before {
+    left: 100%;
+}
+
+.artist-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(212, 175, 55, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.artist-image {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+
+.artist-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #d4af37, #7b68ee);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.artist-card:hover .artist-placeholder {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #7b68ee, #20b2aa);
+}
+
+.artist-name {
+    color: #2c3e50;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.artist-genre {
+    color: #d4af37;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.artist-description {
+    color: #495057;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* お問い合わせセクション */
+.contact {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(212, 175, 55, 0.4);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.contact-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #d4af37, #7b68ee);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.contact-details h3 {
+    color: #2c3e50;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.contact-details p {
+    color: #495057;
+    line-height: 1.6;
+}
+
+.contact-form {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #2c3e50;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #d4af37;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #6c757d;
+}
+
+.form-group select option {
+    background: #ffffff;
+    color: #2c3e50;
+}
+
+/* フッター */
+.footer {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 60px 0 30px;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.footer-logo-img {
+    height: 60px;
+    width: auto;
+    max-width: 250px;
+    object-fit: contain;
+}
+
+.footer-info p {
+    color: #495057;
+    margin-bottom: 10px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #d4af37, #7b68ee);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.footer-bottom p {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+/* スクロールトップボタン */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #d4af37, #7b68ee);
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
+}
+
+/* アニメーション */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 1024px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: rgba(0, 0, 0, 0.98);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 50px;
+        transition: left 0.3s ease;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-toggle.active .bar:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .nav-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle.active .bar:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    .timetable-container {
+        padding: 20px;
+    }
+
+    .time-axis {
+        font-size: 0.9rem;
+    }
+
+    .artists-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form {
+        padding: 30px 20px;
+    }
+
+    .scroll-top {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+
+    .about-item,
+    .contact-item {
+        padding: 20px;
+    }
+
+    .artist-card {
+        padding: 20px;
+    }
+
+    .contact-form {
+        padding: 20px 15px;
+    }
+}
+
+/* スクロールアニメーション用のクラス */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.6s ease;
+}
+
+.slide-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.6s ease;
+}
+
+.slide-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scale-in {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.6s ease;
+}
+
+.scale-in.visible {
+    opacity: 1;
+    transform: scale(1);
+}
